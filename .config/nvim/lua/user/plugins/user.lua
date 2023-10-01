@@ -13,4 +13,15 @@ return {
     "wakatime/vim-wakatime",
     lazy = false,
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    lazy = false,
+    ft = "markdown",
+    cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {
+    "prisma/vim-prisma",
+    lazy = false,
+  },
 }
