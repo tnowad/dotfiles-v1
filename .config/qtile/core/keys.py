@@ -66,8 +66,8 @@ keys = [Key(*key) for key in [  # type: ignore
     ([], "Print", lazy.spawn("gnome-screenshot -i")),
 
     # backlight
-    ([mod], "XF86AudioLowerVolume", lazy.spawn("brightnessctl set 5%-")),
-    ([mod], "XF86AudioRaiseVolume", lazy.spawn("brightnessctl set +5%")),
+    ([mod], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
+    ([mod], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
 
     # volume
     ([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute")),
