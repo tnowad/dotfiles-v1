@@ -8,9 +8,9 @@ groups: list[Group] = []
 
 for key, label, layout, matches in [
     ("1", "", None, wm_class("kitty")),
-    ("2", "", "max", wm_class("kitty", "code", "android-studio")),
-    ("3", "", None, wm_class("insomnia", "obs", "evince")),
-    ("4", "󰈹", "max", wm_class("google-chrome-stable", "firefox")),
+    ("2", "", "max", wm_class("neovide", "code", "android-studio")),
+    ("3", "󰈹", "max", wm_class("google-chrome-stable", "firefox")),
+    ("4", "", None, wm_class("insomnia", "obs", "evince")),
     ("5", "󰇮", "max", wm_class("discord", "telegram-desktop")),
     ("6", "", "max", wm_class("spotify", "vlc")),
 ]:
