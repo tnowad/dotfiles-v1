@@ -1,6 +1,7 @@
 export GPG_TTY=$(tty)
 set fish_greeting ""
 export EDITOR="nvim"
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
