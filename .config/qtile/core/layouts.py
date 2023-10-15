@@ -12,23 +12,20 @@ config = {
     "single_margin": 2,
 }
 
-# layouts = [
-#     layout.MonadTall(
-#         **config,
-#         change_ratio=0.02,
-#         min_ratio=0.30,
-#         max_ratio=0.70,
-#     ),
-#     layout.Max(**config),
-# ]
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=1),
+    layout.Columns(**config),
+    # layout.MonadTall(
+    #     **config,
+    #     change_ratio=0.02,
+    #     min_ratio=0.30,
+    #     max_ratio=0.70,
+    # ),
+    # layout.Columns(border_focus_stack=[palette.base, palette.pink], border_width=1),
     layout.Max(**config),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
