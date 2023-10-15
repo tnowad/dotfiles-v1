@@ -82,6 +82,24 @@ def volume(bg, fg): return [
 ]
 
 
+def backlight(bg, fg): return [
+    modify(
+        TextBox,
+        **base(bg, fg),
+        **symbol(),
+        **powerline("arrow_left"),
+        text="󰃟",
+        x=4,
+    ),
+    widget.Backlight(
+        **base(bg, fg),
+        **powerline("arrow_left"),
+        step=5,
+        backlight_name="amdgpu_bl1",
+        change_command="brightnessctl set {}%",
+    ),
+]
+
 def updates(bg, fg): return [
     TextBox(
         **base(bg, fg),
@@ -196,6 +214,7 @@ def widgets(): return [
     groups(None),
     sep(palette.surface2, offset=8, padding=2),
     *volume(palette.pink, palette.base),
+    *backlight(palette.pink, palette.base),
     *updates(palette.red, palette.base),
     widget.Spacer(),
     window_name(palette.text),
