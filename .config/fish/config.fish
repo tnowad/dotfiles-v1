@@ -1,7 +1,6 @@
 export GPG_TTY=$(tty)
 set fish_greeting ""
 export EDITOR="nvim"
-export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
@@ -17,3 +16,23 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # pyenv
 # pyenv init - | source
+
+# Jenv
+eval set -gx PATH '/home/tnowad/.jenv/shims' $PATH
+set -gx JENV_SHELL fish
+set -gx JENV_LOADED 1
+set -e JAVA_HOME
+set -e JDK_HOME
+jenv rehash 2>/dev/null
+jenv refresh-plugins
+function jenv
+  set command $argv[1]
+  set -e argv[1]
+
+  switch "$command"
+  case enable-plugin rehash shell shell-options
+    jenv "sh-$command" $argv | source
+  case '*'
+    command jenv "$command" $argv
+  end
+end
