@@ -102,6 +102,26 @@ def backlight(bg, fg): return [
     ),
 ]
 
+def battery(bg, fg): return [
+    modify(
+        TextBox,
+        **base(bg, fg),
+        **symbol(14),
+        offset=-1,
+        padding=0,
+        x=-2,
+    ),
+    widget.Battery(
+        **base(bg, fg),
+        **rectangle("right"),
+        full_char='󱊣',
+        charge_char='󱊥',
+        discharge_char='󱊢',
+        format='{char} {percent:2.0%}',
+        hide_threshold=0.99,
+    ),
+]
+
 def updates(bg, fg): return [
     TextBox(
         **base(bg, fg),
@@ -178,7 +198,7 @@ def disk(bg, fg): return [
     ),
     widget.DF(
         **base(bg, fg),
-        **rectangle("right"),
+        **powerline("arrow_right"),
         format="{f} GB  ",
         padding=0,
         partition="/",
@@ -224,6 +244,7 @@ def widgets(): return [
     *cpu(palette.green, palette.base),
     *ram(palette.yellow, palette.base),
     *disk(palette.teal, palette.base),
+    *battery(palette.peach, palette.base),
     sep(palette.surface2),
     *clock(palette.pink, palette.base),
     widget.Spacer(length=1),
