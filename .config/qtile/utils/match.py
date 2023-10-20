@@ -1,6 +1,5 @@
 from libqtile.config import Match
 
-
 class Matches:
     def __init__(self, property: str):
         self.property = property

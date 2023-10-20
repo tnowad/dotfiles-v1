@@ -1,5 +1,4 @@
 from libqtile.widget import base, groupbox
-
 from extras.drawer import framed
 
 

@@ -26,4 +26,4 @@ mouse = [
         "Button2",
         lazy.window.bring_to_front(),
     ),
-]  # fmt: skip
+]

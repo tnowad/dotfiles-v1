@@ -1,4 +1,4 @@
-from core import (  # noqa: F401
+from core import (
     floating_layout,
     groups,
     hooks,

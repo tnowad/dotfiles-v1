@@ -1,6 +1,5 @@
 from libqtile.config import Group, Key
 from libqtile.lazy import lazy
-
 from core.keys import keys, mod
 from utils.match import wm_class
 

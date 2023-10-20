@@ -1,8 +1,6 @@
 from dataclasses import dataclass
 
-
 # https://github.com/catppuccin/catppuccin#-palette
-# fmt: off
 @dataclass(frozen=True)
 class Catppuccin:
     rosewater = "#f5e0dc"

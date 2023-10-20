@@ -1,5 +1,4 @@
 from libqtile import layout
-
 from utils.match import title, wm_class
 from utils.palette import palette
 

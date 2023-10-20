@@ -1,5 +1,4 @@
 import math
-
 from libqtile import bar
 from libqtile.widget import base, textbox
 

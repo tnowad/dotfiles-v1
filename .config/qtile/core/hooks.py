@@ -1,7 +1,5 @@
 import asyncio
-
 from libqtile import hook
-
 from core.screens import screens
 
 bars = [screen.top for screen in screens]

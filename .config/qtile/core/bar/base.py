@@ -1,9 +1,7 @@
 from importlib import import_module
 from os import listdir
 from os.path import isfile, join
-
 from libqtile import bar
-
 from extras import PowerLineDecoration, RectDecoration
 from utils.config import cfg
 

@@ -1,6 +1,5 @@
 from libqtile.bar import CALCULATED
 from libqtile.lazy import lazy
-
 from core.bar.base import base, powerline, rectangle, symbol
 from extras import Clock, GroupBox, TextBox, modify, widget
 from utils.config import cfg

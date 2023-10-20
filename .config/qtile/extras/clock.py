@@ -1,6 +1,5 @@
 from libqtile.widget import clock
 
-
 class Clock(clock.Clock):
     defaults = [
         (
