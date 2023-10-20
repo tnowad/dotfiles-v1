@@ -48,10 +48,13 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+
+#     # qtile stuff
+    Key([mod, "control"], "b", lazy.hide_show_bar(), desc="Hide show bar"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "r", lazy.spawn("rofi -show run")),
+
+    Key([mod], "r", lazy.spawn("rofi -show run"), desc="Spawn a command using a prompt widget"),
     Key([mod, "shift"], "r", lazy.spawncmd()),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer --decrease 5")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer --increase 5")),
@@ -59,14 +62,13 @@ keys = [
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
 
-    # Regular screenshots
-    Key([], "Print", lazy.spawn("maim '/home/$USER/Pictures/$(date)'")),
-    Key([mod], "Print", lazy.spawn(
-        "maim --window $(xdotool getactivewindow) '/home/$USER/Pictures/$(date)'")),
-    Key(["shift"], "Print", lazy.spawn(
-        "maim --select '/home/$USER/Pictures/$(date)'")),
-    # Clipboard screenshots
-    Key([mod, "shift"], "Print", lazy.spawn('gnome-screenshot -i')),
+    # screenshot tool
+    Key([], "Print", lazy.spawn("gnome-screenshot -i"), desc="Take a screenshot"),
+    Key(["shift"], "Print", lazy.spawn("gnome-screenshot -i"), desc="Take a screenshot of a window"),
+    Key(["control"], "Print", lazy.spawn("gnome-screenshot -i -a"), desc="Take a screenshot of an area"),
+    Key([mod], "Print", lazy.spawn("gnome-screenshot -i -c"), desc="Take a screenshot to clipboard"),
+    Key([mod, "shift"], "Print", lazy.spawn("gnome-screenshot -i -c"), desc="Take a screenshot of a window to clipboard"),
+    Key([mod, "control"], "Print", lazy.spawn("gnome-screenshot -i -c -a"), desc="Take a screenshot of an area to clipboard"),
 ]
 
 widget_defaults = dict(
@@ -242,44 +244,4 @@ keys.extend([Key([mod], "F1", lazy.spawn("sh -c 'echo \"" + show_keys() +
 #     # web browser
 #     ([mod], "b", lazy.spawn(cfg.browser)),
 #
-#     # screenshot tool
-#     ([], "Print", lazy.spawn("gnome-screenshot -i")),
-#
-#     # backlight
-#     ([mod], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
-#     ([mod], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
-#
-#     # volume
-#     ([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute")),
-#     ([], "XF86AudioLowerVolume", lazy.spawn("pamixer --decrease 5")),
-#     ([], "XF86AudioRaiseVolume", lazy.spawn("pamixer --increase 5")),
-#
-#     # player
-#     ([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
-#     ([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
-#     ([], "XF86AudioNext", lazy.spawn("playerctl next")),
 # ]]  # fmt: skip
-#
-# def show_keys():
-#     key_help = ""
-#     for k in keys:
-#         mods = ""
-#
-#         for m in k.modifiers:
-#             if m == "mod4":
-#                 mods += "Super + "
-#             else:
-#                 mods += m.capitalize() + " + "
-#
-#         if len(k.key) > 1:
-#             mods += k.key.capitalize()
-#         else:
-#             mods += k.key
-#
-#         key_help += "{:<30} {}".format(mods, k.desc + "\n")
-#
-#     return key_help
-#
-#
-# keys.extend([Key([mod], "F1", lazy.spawn("sh -c 'echo \"" + show_keys() +
-#             "\" | rofi -dmenu -i -mesg \"Keyboard shortcuts\"'"), desc="Print keyboard bindings"),])
