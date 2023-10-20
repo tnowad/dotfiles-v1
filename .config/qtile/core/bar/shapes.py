@@ -114,11 +114,14 @@ def battery(bg, fg): return [
     widget.Battery(
         **base(bg, fg),
         **rectangle("right"),
+        battery = "BAT0",
         full_char='󱊣',
         charge_char='󱊥',
+        unknown_char = "",
         discharge_char='󱊢',
+        empty_char="",
         format='{char} {percent:2.0%}',
-        hide_threshold=0.99,
+        update_interval=30,
     ),
 ]
 
