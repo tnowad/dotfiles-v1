@@ -3,8 +3,11 @@
 HISTSIZE=1000
 HISTFILESIZE=1000
 
-export GPG_TTY=$(tty)
-export EDITOR=nvim
+GPG_TTY=$(tty)
+EDITOR=nvim
+
+export GPG_TTY
+export EDITOR
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
