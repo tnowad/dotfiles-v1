@@ -1,4 +1,4 @@
-# ~/.bashrc
+#!/bin/bash
 
 HISTSIZE=1000
 HISTFILESIZE=1000
