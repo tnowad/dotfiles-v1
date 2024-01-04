@@ -3,7 +3,6 @@ set fish_greeting ""
 export EDITOR="nvim"
 
 if status is-interactive
-  # Commands to run in interactive sessions can go here
 end
 
 # tabtab source for packages
