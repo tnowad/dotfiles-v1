@@ -1,6 +1,8 @@
 #!/bin/bash
-
 DOTFILES_DIR="config"
+
+SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/scripts"
+export SCRIPTS_DIR
 
 echo "Starting dotfiles installation..."
 
