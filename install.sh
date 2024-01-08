@@ -1,7 +1,7 @@
 #!/bin/bash
 DOTFILES_DIR="config"
 
-IGNORE_DIRS=("qtile")
+IGNORE_DIRS=("qtile" "neovide")
 
 SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/scripts"
 export SCRIPTS_DIR
