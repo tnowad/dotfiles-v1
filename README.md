@@ -36,10 +36,10 @@ git clone git@github.com:tnowad/dotfiles.git ~/dotfiles
 ```
 
 Once cloned, you can symlink the dotfiles to their respective locations in your
-home directory. This can usually be done with a script or by manually creating symlinks.
-
-Example (Fish Shell):
+home directory.
 
 ```bash
-ln -s /home/tnowad/dotfiles/.config/fish /home/tnowad/.config/
+cd dotfiles
+./install.sh
+```
 ```
