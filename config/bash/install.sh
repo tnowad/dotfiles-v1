@@ -5,9 +5,8 @@ source "$SCRIPTS_DIR/link_config.sh"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-SOURCE_DIR="$SCRIPT_DIR/config"
-CONFIG_DIR="$HOME/.config/fish"
+link_config "$SCRIPT_DIR/.bash_profile" "$HOME/.bash_profile"
+link_config "$SCRIPT_DIR/.bash_logout" "$HOME/.bash_logout"
+link_config "$SCRIPT_DIR/.bashrc" "$HOME/.bashrc"
 
-link_config "$SOURCE_DIR" "$CONFIG_DIR"
-
-echo "Fish configuration linked."
+echo "Bash configuration linked."
