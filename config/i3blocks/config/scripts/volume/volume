@@ -1,43 +1,18 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-if [[ -z "$MIXER" ]]; then
-	MIXER="pactl"
-fi
+volume=$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}' | sed 's/%//')
+mute=$(pactl list sinks | grep 'Mute:' | head -n 1 | awk '{print $2}')
 
-if [[ -z "$SCONTROL" ]]; then
-	SCONTROL="${BLOCK_INSTANCE:-$(pactl list sinks | grep 'Sink #' | awk '{print $NF}' | head -n1)}"
-fi
-
-if [[ -z "$STEP" ]]; then
-	STEP="${1:-5%}"
-fi
-
-#------------------------------------------------------------------------
-
-capability() { # Return "Capture" if the device is a capture device
-	pactl list sources | grep -q "Name: $SCONTROL" && echo "Capture"
-}
-
-volume() {
-	pactl list sinks | grep -A 10 -e "Sink #$SCONTROL" | grep 'Volume' | awk '{print $5}'
-}
-
-format() {
-	output=$(pactl list sinks | grep -A 10 -e "Sink #$SCONTROL" | grep 'Mute' | awk '{print $2}')
-
-	if [[ "$output" == "yes" ]]; then
-		echo "MUTE"
+if [ "$mute" == "yes" ]; then
+	icon="󰖁"
+else
+	if [ "$volume" -eq 0 ]; then
+		icon=""
+	elif [ "$volume" -lt 50 ]; then
+		icon=""
 	else
-		echo "$LABEL$STEP"
+		icon=""
 	fi
-}
+fi
 
-#------------------------------------------------------------------------
-
-case $BLOCK_BUTTON in
-3) pactl set-sink-mute $SCONTROL toggle ;;   # right click, mute/unmute
-4) pactl set-sink-volume $SCONTROL +$STEP ;; # scroll up, increase
-5) pactl set-sink-volume $SCONTROL -$STEP ;; # scroll down, decrease
-esac
-
-volume | format
+echo "$icon $volume%"
